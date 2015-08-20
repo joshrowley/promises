@@ -5,7 +5,7 @@ var when   = require('when')
   ;
 
 function showError (xhr, status, err) {
-    log.error(err);
+  log.error(err);
 }
 
 var api = function(path) {
@@ -222,3 +222,135 @@ var username = 'dhh';
   // .then(findMostPopularRepo)
   // .then(getRepoIssues)
   // .then(log.success)
+
+
+//
+// when.js gives us tap which allows us to run any functions that are side
+// effects of the previous promises return value
+//
+//
+// Using only .then()
+// promise.then(function(x) {
+    // doSideEffectsHere(x);
+    // return x;
+// });
+
+// // Using .tap()
+// promise.tap(doSideEffectsHere);
+//
+//
+// any other "thenable" promise can be consumed and wrapped by when.js
+// this is great for creating a standard interface between libraries that
+// might use different promise libraries
+//
+//
+//
+// Show error handling
+//
+//
+//
+// Show .delay
+//
+//
+// Show timeout
+
+
+
+
+// Some other fancy and useful features
+//
+//
+//
+//
+//
+//
+// when.map
+//
+//
+//
+
+
+// var users = [
+  // 'aviflombaum', 'adamjonas', 'loganhasson', 'spencer1248', 'ahimmelstoss',
+  // 'danielchangNYC', 'JessRudder', 'matbalez', 'ThisisEdvin', 'johnmarc',
+  // 'joshrowley', 'EricR', 'ktravers', 'kvignali', 'snags88', 'caporta',
+  // 'fis-spencer1248', 'abhishekpillai', 'frahman5'
+// ]
+
+// when.map(users, getUser).then(log.success)
+//
+//
+//
+//
+//
+
+// function getIssuesForMostPopularRepoForUser(username) {
+  // return getUser(username)
+    // .then(getRepos)
+    // .then(findMostPopularRepo)
+    // .then(getRepoIssues);
+// }
+
+// when.map(users, getIssuesForMostPopularRepoForUser)
+  // .then(log.success);
+//
+//
+
+
+// when.reduce
+// to collect key value pairs of username => most popular repo name
+
+// function usersMostPopularRepo (user) {
+  // return getUser(user)
+    // .then(getRepos)
+    // .then(findMostPopularRepo)
+// }
+
+
+
+// when.reduce(when.map(users, usersMostPopularRepo), function(result, repo, index) {
+  // if (_.isObject(repo)) {
+    // result[repo.owner.login] = repo.name;
+  // }
+  // return result;
+// }, {}).then(log.success);
+
+
+
+//
+//
+// View docs for others
+//
+//
+// when.filter
+//
+// Array Races
+// when.some
+// when.any
+//
+// when.lift
+// when.sequence
+// when.pipeline
+//
+//
+// Infinite Promise Sequences
+// when.iterate
+//
+//
+// promise.with(context)
+//
+//
+//
+//
+//
+//
+//
+//
+// PROMISES ARE AWESOME BECAUSE:
+//
+// 1. no more callbacks (kind of, at least no more pyramids)
+// 2. restores the concept of a return value to asynchronous code
+// 3. standard abstract interface allows us to deal with all sorts of different
+//    async function in the same way with the same tools
+// 4. easier consolidated error handling
+// 5. the ability to chain promises together
